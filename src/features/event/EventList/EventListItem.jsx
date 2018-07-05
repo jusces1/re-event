@@ -7,7 +7,7 @@ class EventListItem extends Component {
     const {event} = this.props;
     return <Segment.Group>
         <Segment>
-          <Item.Group>
+          <Item.Group>`
             <Item>
               <Item.Image size="tiny" circular src={event.hostPhotoURL} />
               <Item.Content>
@@ -27,7 +27,7 @@ class EventListItem extends Component {
         </Segment>
         <Segment secondary>
           <List horizontal>
-            {event.attendees.map(attendee => (
+            {event.attendees && event.attendees.map(attendee => (
               <EventListAttendee key={attendee.id} attendee={attendee} />
             ))}
           </List>
