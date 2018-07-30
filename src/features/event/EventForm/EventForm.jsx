@@ -58,20 +58,38 @@ class EventForm extends Component {
         venueLatLng: {},
         scriptLoaded: false
     }
+
     handleScriptLoad = () => this.setState({ scriptLoaded: true });
 
     handleCitySelect = (selectedCity) => {
         geocodeByAddress(selectedCity)
-        .then(results =>
-          getLatLng(results[0])
+        .then(results => getLatLng(results[0])
         ).then(latlng => {
-            this.setState({ cityLatLng: latlng });
-        }).then(() => {
-            this.props.change('city', selectedCity)
+            this.setState({ 
+                cityLatLng: latlng 
+            });
+        })
+        .then(() => {
+            this.props.change('city', selectedCity);
         })
     }
+
+    handleVenueSelect = (selectedVenue) => {
+        geocodeByAddress(selectedVenue)
+        .then(results => getLatLng(results[0])
+        ).then(latlng => {
+            this.setState({ 
+                venueLatLng: latlng 
+            });
+        })
+        .then(() => {
+            this.props.change('venue', selectedVenue);
+        })
+    }
+
     onFormSubmit = values => {
         values.date = moment(values.date).format();
+        values.venueLatLng = this.state.venueLatLng; 
         if(this.props.initialValues.id) {
             this.props.updateEvent(values);
             this.props.history.goBack();
@@ -116,6 +134,7 @@ class EventForm extends Component {
                                     radius: 1000,
                                     types: ['establishment']
                                 }} 
+                                onSelect={this.handleVenueSelect} 
                                 placeholder='Event venue' 
                         />}
                         <Field name='date'
