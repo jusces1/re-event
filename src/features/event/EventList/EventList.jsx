@@ -5,7 +5,7 @@ import EventListItem from "./EventListItem";
   render() {
     const { events, deleteEvent } = this.props;
     return <div>
-        {events.map(event => (
+        {events && events.map(event => (
           <EventListItem
             key={event.id}
             event={event}
