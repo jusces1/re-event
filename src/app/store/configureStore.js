@@ -4,13 +4,12 @@ import {reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import {reduxFirestore, getFirestore} from 'redux-firestore'
 import thunk from 'redux-thunk'
 import  rootReducer  from "../reducers/rootReducer";
-import { truncateSync } from "fs";
 import firebase from "../config/firebase";
 
 const rrfConfig = {
     userProfile: 'users',
     attachAuthIsReady: true,
-    useFirestoreForProfile: truncateSync
+    useFirestoreForProfile: true
 }
 
 export const configureStore = (preloadeState) => {
