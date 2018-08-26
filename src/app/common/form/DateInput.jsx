@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
 
-const DateInput = ({ input: { value, onChange, onBlur, ...restInput }, width, placeholder, meta: { touched, error }, ...rest }) => {
+const DateInput = ({input: {value, onChange, onBlur, ...restInput}, width, placeholder, meta: {touched, error}, ...rest}) => {
   if (value) {
     value = moment(value, 'X')
   }
