@@ -26,7 +26,7 @@ class PlaceInput extends Component {
       meta: { touched, error }
     } = this.props;
     return <Form.Field error={touched && !!error} width={width}>
-        <Script url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWojxsqP2Uke0Uj42WWgo74XccU_Hurns&libraries=places" onLoad={this.handleScriptLoaded} />
+      <Script url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWojxsqP2Uke0Uj42WWgo74XccU_Hurns&libraries=places" onLoad={this.handleScriptLoaded} />
         {this.state.scriptLoaded && <PlacesAutocomplete inputProps={{ ...input, placeholder }} options={options} onSelect={onSelect} styles={styles} />}
         {touched && error && <Label basic color="red">
               {error}
